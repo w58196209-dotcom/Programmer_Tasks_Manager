@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>إدارة مهام المبرمجين</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="topbar">
+        <div class="brand-wrap">
+          <div>
+            <p class="eyebrow" data-i18n="eyebrow">لوحة تنظيم العمل</p>
+            <h1 data-i18n="title">إدارة مهام المبرمجين</h1>
+          </div>
+        </div>
+        <div class="header-actions">
+          <label class="language-select-wrap" aria-label="Language selector">
+            <select id="languageSelect" class="language-select">
+              <option value="ar">AR</option>
+              <option value="en">EN</option>
+              <option value="fr">FR</option>
+              <option value="de">DE</option>
+              <option value="ko">KR</option>
+              <option value="ru">RU</option>
+              <option value="pt">PT</option>
+              <option value="es">ES</option>
+              <option value="hi">HI</option>
+              <option value="tr">TR</option>
+              <option value="it">IT</option>
+              <option value="ja">JP</option>
+              <option value="zh">CN</option>
+            </select>
+          </label>
+          <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+            <span class="toggle-track">
+              <span class="toggle-thumb">
+                <span class="toggle-icon">☀️</span>
+              </span>
+            </span>
+          </button>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="panel form-panel">
+          <div class="panel-header">
+            <span class="dot dot-blue"></span>
+            <h2 data-i18n="addTaskTitle">إضافة مهمة جديدة</h2>
+          </div>
+
+          <form id="taskForm" class="task-form">
+            <div class="input-group">
+              <label for="title" data-i18n="taskTitleLabel">عنوان المهمة</label>
+              <input id="title" name="title" type="text" data-i18n-placeholder="taskTitlePlaceholder" placeholder="مثال: إصلاح خطأ في واجهة الدفع" maxlength="80" required />
+            </div>
+
+            <div class="input-group">
+              <label for="description" data-i18n="taskDescriptionLabel">الوصف</label>
+              <textarea id="description" name="description" rows="3" data-i18n-placeholder="taskDescriptionPlaceholder" placeholder="اكتب تفاصيل المهمة أو النتيجة المطلوبة..."></textarea>
+            </div>
+
+            <div class="form-row">
+              <div class="input-group">
+                <label for="priority" data-i18n="priorityLabel">الأولوية</label>
+                <select id="priority" name="priority">
+                  <option value="high" data-i18n="priorityHigh">عالية</option>
+                  <option value="medium" selected data-i18n="priorityMedium">متوسطة</option>
+                  <option value="low" data-i18n="priorityLow">منخفضة</option>
+                </select>
+              </div>
+
+              <div class="input-group">
+                <label for="category" data-i18n="categoryLabel">الفئة</label>
+                <select id="category" name="category">
+                  <option value="feature" data-i18n="categoryFeature">ميزة</option>
+                  <option value="bug" data-i18n="categoryBug">خطأ</option>
+                  <option value="research" data-i18n="categoryResearch">بحث</option>
+                  <option value="test" data-i18n="categoryTest">اختبار</option>
+                  <option value="refactor" data-i18n="categoryRefactor">إعادة هيكلة</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label for="dueDate" data-i18n="dueDateLabel">تاريخ الاستحقاق</label>
+              <input id="dueDate" name="dueDate" type="date" />
+            </div>
+
+            <button type="submit" class="primary-btn" data-i18n="addTaskBtn">إضافة المهمة</button>
+          </form>
+        </section>
+
+        <section class="panel list-panel">
+          <div class="panel-header list-header">
+            <div class="title-wrap">
+              <span class="dot dot-green"></span>
+              <h2 data-i18n="taskListTitle">قائمة المهام</h2>
+            </div>
+            <div class="toolbar">
+              <input id="searchInput" type="search" data-i18n-placeholder="searchPlaceholder" placeholder="بحث سريع..." aria-label="بحث عن مهام" />
+              <button id="shareDataBtn" class="share-btn" type="button" data-i18n="shareDataBtn">مشاركة البيانات</button>
+            </div>
+          </div>
+
+          <div class="filter-row" id="filterRow">
+            <button class="filter-btn active" data-filter="all" data-i18n="filterAll">الكل</button>
+            <button class="filter-btn" data-filter="pending" data-i18n="filterPending">قيد التنفيذ</button>
+            <button class="filter-btn" data-filter="done" data-i18n="filterDone">مكتملة</button>
+            <button class="filter-btn" data-filter="high" data-i18n="filterHigh">أولوية عالية</button>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <span class="stat-label" data-i18n="statTotal">إجمالي</span>
+              <strong id="totalTasks">0</strong>
+            </div>
+            <div class="stat-card accent">
+              <span class="stat-label" data-i18n="statDone">مكتملة</span>
+              <strong id="doneTasks">0</strong>
+            </div>
+            <div class="stat-card warning">
+              <span class="stat-label" data-i18n="statPending">متبقية</span>
+              <strong id="pendingTasks">0</strong>
+            </div>
+            <div class="stat-card success">
+              <span class="stat-label" data-i18n="statProgress">نسبة الإنجاز</span>
+              <strong id="progressValue">0%</strong>
+            </div>
+          </div>
+
+          <div id="taskList" class="task-list" aria-live="polite"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="i18n/index.js"></script>
+    <script src="i18n/ar.js"></script>
+    <script src="i18n/en.js"></script>
+    <script src="i18n/fr.js"></script>
+    <script src="i18n/de.js"></script>
+    <script src="i18n/ko.js"></script>
+    <script src="i18n/ru.js"></script>
+    <script src="i18n/pt.js"></script>
+    <script src="i18n/es.js"></script>
+    <script src="i18n/hi.js"></script>
+    <script src="i18n/tr.js"></script>
+    <script src="i18n/it.js"></script>
+    <script src="i18n/ja.js"></script>
+    <script src="i18n/zh.js"></script>
+    <script src="shareData.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
