@@ -1,6 +1,5 @@
 (function (global) {
   const SHARE_NAME = 'share';
-  const DEFAULT_APP_URL = 'http://Programmer-Tasks-Manager';
 
   function toBase64Url(value) {
     if (typeof Buffer !== 'undefined' && typeof Buffer.from === 'function') {
@@ -86,8 +85,8 @@
   }
 
   function buildShareUrl(tasks, baseUrl) {
-    const sourceUrl = baseUrl || (global.location ? global.location.href : DEFAULT_APP_URL);
-    const url = new URL(sourceUrl, global.location ? global.location.href : DEFAULT_APP_URL);
+    const sourceUrl = baseUrl || (global.location ? global.location.href : 'https://example.com');
+    const url = new URL(sourceUrl, global.location ? global.location.href : 'https://example.com');
     url.searchParams.set(SHARE_NAME, serializeSharedTasks(tasks));
     return url.toString();
   }

@@ -354,8 +354,7 @@ textarea {
 .ghost-btn,
 .filter-btn,
 .action-btn,
-.share-btn,
-.clear-btn {
+.share-btn {
   border: none;
   border-radius: 12px;
   cursor: pointer;
@@ -366,8 +365,7 @@ textarea {
 .ghost-btn:hover,
 .filter-btn:hover,
 .action-btn:hover,
-.share-btn:hover,
-.clear-btn:hover {
+.share-btn:hover {
   transform: translateY(-1px);
 }
 
@@ -390,14 +388,6 @@ textarea {
   background: rgba(37, 99, 235, 0.08);
   color: var(--primary);
   border: 1px solid rgba(37, 99, 235, 0.18);
-  white-space: nowrap;
-}
-
-.clear-btn {
-  padding: 10px 14px;
-  background: rgba(239, 68, 68, 0.08);
-  color: var(--danger);
-  border: 1px solid rgba(239, 68, 68, 0.18);
   white-space: nowrap;
 }
 
