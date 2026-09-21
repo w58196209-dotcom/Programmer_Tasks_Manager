@@ -11,7 +11,7 @@
    ```
 3. افتح المتصفح على:
    ```text
-   http://localhost:8000
+   http://Programmer-Tasks-Manager
    ```
 
 ## التحكم

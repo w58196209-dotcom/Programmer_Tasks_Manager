@@ -17,8 +17,8 @@ const encoded = serializeSharedTasks(tasks);
 assert.equal(Array.isArray(deserializeSharedTasks(encoded)), true);
 assert.deepEqual(deserializeSharedTasks(encoded), tasks);
 
-const shareUrl = buildShareUrl(tasks, 'https://example.com/index.html');
-assert.match(shareUrl, /^https:\/\/example\.com\/index\.html\?/);
+const shareUrl = buildShareUrl(tasks, 'http://Programmer-Tasks-Manager');
+assert.match(shareUrl, /^http:\/\/Programmer-Tasks-Manager\?/);
 assert.equal(new URL(shareUrl).searchParams.get('share'), encoded);
 
 console.log('share data tests passed');

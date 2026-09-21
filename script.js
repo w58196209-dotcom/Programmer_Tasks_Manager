@@ -13,6 +13,7 @@ const pendingTasksEl = document.getElementById('pendingTasks');
 const progressValueEl = document.getElementById('progressValue');
 const themeToggleBtn = document.getElementById('themeToggle');
 const shareDataBtn = document.getElementById('shareDataBtn');
+const clearDataBtn = document.getElementById('clearDataBtn');
 
 let tasks = loadTasks();
 let activeFilter = 'all';
@@ -361,6 +362,11 @@ function deleteTask(taskId) {
 }
 
 function clearAllTasks() {
+  const confirmed = window.confirm(t('clearDataConfirm'));
+  if (!confirmed) {
+    return;
+  }
+
   tasks = [];
   saveTasks();
   renderTasks();
@@ -376,6 +382,7 @@ filterButtons.forEach((button) => {
 
 searchInput.addEventListener('input', renderTasks);
 shareDataBtn?.addEventListener('click', shareTasks);
+clearDataBtn?.addEventListener('click', clearAllTasks);
 
 taskForm.addEventListener('submit', addTask);
 
